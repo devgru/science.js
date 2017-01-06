@@ -1,3 +1,1 @@
-require("./science.v1");
-
-module.exports = science;
+module.exports = require("./science.v1");
