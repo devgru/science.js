@@ -1736,4 +1736,4 @@ science.stats.distribution.gaussian = function() {
 };
 
 })(this);
-this.science = science;
+if (typeof module !== "undefined" && typeof module.exports !== "undefined") module.exports = science; else window.science = science;
