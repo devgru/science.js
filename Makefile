@@ -66,7 +66,7 @@ test: all
 
 %.v1.js:
 	@rm -f $@
-	@echo '' > $@
+	@echo 'var science;' > $@
 	cat $(filter %.js,$^) >> $@
 	@echo 'if (typeof module !== "undefined" && typeof module.exports !== "undefined") module.exports = science; else window.science = science;' >> $@
 	@chmod a-w $@
