@@ -1,4 +1,4 @@
-(function(exports){
+
 (function(exports){
 science = {version: "1.9.3"}; // semver
 science.ascending = function(a, b) {
@@ -970,6 +970,7 @@ science.stats.bandwidth = {
   // Silverman, B. W. (1986) Density Estimation. London: Chapman and Hall.
   nrd0: function(x) {
     var hi = Math.sqrt(science.stats.variance(x));
+    var lo;
     if (!(lo = Math.min(hi, science.stats.iqr(x) / 1.34)))
       (lo = hi) || (lo = Math.abs(x[1])) || (lo = 1);
     return .9 * lo * Math.pow(x.length, -.2);
@@ -1702,7 +1703,7 @@ science.stats.distribution.gaussian = function() {
 
   gaussian.pdf = function(x) {
     x = (x - mean) / sigma;
-    return science_stats_distribution_gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+    return exports.science_stats_distribution_gaussianConstant * Math.exp(-.5 * x * x) / sigma;
   };
 
   gaussian.cdf = function(x) {
@@ -1731,6 +1732,6 @@ science.stats.distribution.gaussian = function() {
   return gaussian;
 };
 
-science_stats_distribution_gaussianConstant = 1 / Math.sqrt(2 * Math.PI);
+exports.science_stats_distribution_gaussianConstant = 1 / Math.sqrt(2 * Math.PI);
 })(this);
-})(this);
+if (typeof module !== "undefined" && typeof module.exports !== "undefined") module.exports = science; else window.science = science;

@@ -23,7 +23,7 @@ science.stats.distribution.gaussian = function() {
 
   gaussian.pdf = function(x) {
     x = (x - mean) / sigma;
-    return science_stats_distribution_gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+    return exports.science_stats_distribution_gaussianConstant * Math.exp(-.5 * x * x) / sigma;
   };
 
   gaussian.cdf = function(x) {
@@ -52,4 +52,4 @@ science.stats.distribution.gaussian = function() {
   return gaussian;
 };
 
-science_stats_distribution_gaussianConstant = 1 / Math.sqrt(2 * Math.PI);
+exports.science_stats_distribution_gaussianConstant = 1 / Math.sqrt(2 * Math.PI);

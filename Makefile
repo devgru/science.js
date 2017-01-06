@@ -64,6 +64,13 @@ test: all
 	@rm -f $@
 	$(JS_COMPILER) < $< > $@
 
+%.v1.js:
+	@rm -f $@
+	@echo '' > $@
+	cat $(filter %.js,$^) >> $@
+	@echo 'if (typeof module !== "undefined" && typeof module.exports !== "undefined") module.exports = science; else window.science = science;' >> $@
+	@chmod a-w $@
+
 %.js:
 	@rm -f $@
 	@echo '(function(exports){' > $@
