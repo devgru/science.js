@@ -1680,6 +1680,9 @@ science.stats.distribution = {
 };
 // From http://www.colingodsey.com/javascript-gaussian-random-number-generator/
 // Uses the Box-Muller Transform.
+
+var science_stats_distribution_gaussianConstant = 1 / Math.sqrt(2 * Math.PI);
+
 science.stats.distribution.gaussian = function() {
   var random = Math.random,
       mean = 0,
@@ -1703,7 +1706,7 @@ science.stats.distribution.gaussian = function() {
 
   gaussian.pdf = function(x) {
     x = (x - mean) / sigma;
-    return exports.science_stats_distribution_gaussianConstant * Math.exp(-.5 * x * x) / sigma;
+    return science_stats_distribution_gaussianConstant * Math.exp(-.5 * x * x) / sigma;
   };
 
   gaussian.cdf = function(x) {
@@ -1732,6 +1735,5 @@ science.stats.distribution.gaussian = function() {
   return gaussian;
 };
 
-exports.science_stats_distribution_gaussianConstant = 1 / Math.sqrt(2 * Math.PI);
 })(this);
-if (typeof module !== "undefined" && typeof module.exports !== "undefined") module.exports = science; else window.science = science;
+this.science = science;
